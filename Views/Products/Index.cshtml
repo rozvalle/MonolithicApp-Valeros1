@@ -1,0 +1,39 @@
+﻿@model Product
+@{
+	ViewData["Title"] = "Products";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ProductId))
+{
+	<p>Product submitted successfully! ID: @ViewBag.ProductId</p>
+}
+<form method="post" asp-action="SubmitProduct" asp-controller="Products">
+	<div style="display:inline-grid">
+		<label for="product_name">Product:</label>
+		<input id="product_name" asp-for="Name" type="text" />
+
+		<label for="product_type">Type:</label>
+		<input id="product_type" asp-for="Type" type="text" />
+
+		<label for="product_manufacturer">Manufacturer:</label>
+		<input id="product_manufacturer" asp-for="Manufacturer" type="text" />
+
+		<button style="margin-top:10px;" type="submit">Submit</button>
+		<hr />
+		<label for="product_id">ID:</label>
+		<input id="product_id" asp-for="Name" type="text" /><br />
+
+		<button type="button" onclick="redirectToDetails()">Search</button>
+
+		<script>
+			function redirectToDetails() {
+				var productId = document.getElementById("product_id").value;
+					window.location.href = "/products/details?id=" + encodeURIComponent(productId);
+			}
+		</script>
+	</div>
+</form>
+
+
+
+

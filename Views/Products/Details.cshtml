@@ -1,0 +1,28 @@
+﻿@model Product
+
+@if(Model!=null){
+<strong>@Model.Id</strong>
+<p>Name: <span>@Model.Name</span></p>
+<p>Type: <span>@Model.Type</span></p>
+<p>Manufacturer: <span>@Model.Manufacturer</span></p>
+	
+<form action="/products/delete" method="post" onsubmit="return confirm('Are you sure you want to delete this product?');">
+<button type="button" onclick="window.location.href='/products/edit?id=@Model.Id'">
+Edit
+</button>
+
+<input type="hidden" name="id" value="@Model.Id" />
+<button type="submit">Delete</button>
+</form>
+}
+else{
+	<strong>Product does not exist or has been deleted!</strong>
+}
+
+
+<br />
+<br />
+<button type="button" onclick="window.location.href='/products'">
+	Back
+</button>
+

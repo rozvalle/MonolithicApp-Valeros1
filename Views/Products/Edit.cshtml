@@ -1,0 +1,30 @@
+﻿
+
+@model Product
+@{
+	ViewData["Title"] = "Edit";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ProductId))
+{
+	<p>Product submitted successfully! ID: @ViewBag.ProductId</p>
+}
+
+
+<form method="post" asp-action="Edit" asp-controller="Products">
+	<div style="display:inline-grid">
+        <input type="hidden" asp-for="Id" />
+
+        <label>Name:</label>
+        <input type="text" asp-for="Name" required />
+
+        <label>Type:</label>
+        <input type="text" asp-for="Type" required />
+
+        <label>Manufacturer:</label>
+        <input type="text" asp-for="Manufacturer" required /> <br />
+
+        <button type="submit">Save</button>
+        <button>Cancel</button>
+	</div>
+</form>
